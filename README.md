@@ -1,5 +1,5 @@
 # http_api
-Deploy api to calculae anda manage how long does it takes to deploy new "things" to Production environment.
+Deploy api to calculate and manage how long does it takes to deploy new "things" to Production environment.
 The API will receive:
 * Component: What is been deployed
 * Version: Version (self explained)
