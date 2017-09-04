@@ -5,6 +5,6 @@ log = dict(
 db = dict(
         db = "deploy",
         user = "deploy",
-        host = "localhost"
+        host = "172.17.0.1"
         )
 

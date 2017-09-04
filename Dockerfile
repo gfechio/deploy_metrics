@@ -7,4 +7,5 @@ ADD src/ /src/
 ENV APP_DIR /src
 ENV FLASK_APP /src/app.py
 EXPOSE 5000
+RUN python src/create_db.py
 CMD ["flask", "run", "--host=0.0.0.0"]
