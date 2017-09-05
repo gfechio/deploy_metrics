@@ -1,7 +1,9 @@
 import json
 import datetime
+import db_handler
 
 def get():
-    f = open('FILE.TXT', 'r')
-    response = f.read(1)
-    return "%s \n" %response
+    response = db_handler.cockroachdb(config.db["db"], config.db['user'], config.db['host'],
+        "SELECT * FROM  deploy" )
+
+    return json.loads(response)

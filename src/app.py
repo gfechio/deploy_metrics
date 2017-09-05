@@ -18,13 +18,17 @@ def deploy():
     if request.method == 'POST':
 
         if request.headers['Content-Type'] == 'application/json':
-            data = {}
-            data["req"] = json.loads(request.data)
+            req = json.dumps(request.data)
+            #XXX : FIX what is wrng here :
+            for item in json.loads(req)[0]:
+                data["id"] = item['id']
+                data["status"] = item['status']
+
             date = datetime.datetime.today()
             data["time"] = date.strftime("%Y-%m-%d %H:%M:%S")
             db_handler.cockroachdb(config.db["db"], config.db['user'], config.db['host'],
-                "INSERT INTO deploy (time, deploy, id) VALUES ('%s', %s, %s)"
-                %(data['time'], data['req'],data['req']) )
+                "INSERT INTO deploy (time, status, id) VALUES ('%s', %s, %s)"
+                %(data['time'], data['status'],data['req']) )
 
             log.logger.info("request.response")
             return  "200 OK"
