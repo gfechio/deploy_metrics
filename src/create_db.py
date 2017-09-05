@@ -13,16 +13,22 @@ def create_db():
             db_handler.cockroachdb("", "root", config.db['host'],
                 "CREATE DATABASE %s" %(config.db['db']) )
             db_handler.cockroachdb(config.db["db"], config.db['user'], config.db['host'],
-                "CREATE TABLE IF NOT EXISTS %s ( id INT PRIMARY KEY,  deploy INT, time DATE )" %(config.db['db']) )
+                "CREATE TABLE IF NOT EXISTS %s ( id INT PRIMARY KEY,  deploy INT, time TIMESTAMP )" %(config.db['db']) )
             f= open("/src/db_done","w+")
             f.close()
         except:
             db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
-                "CREATE TABLE IF NOT EXISTS %s ( id INT PRIMARY KEY,  deploy INT, time DATE )" %(config.db['db']) )
+                "CREATE TABLE IF NOT EXISTS %s ( id INT PRIMARY KEY,  deploy INT, time TIMESTAMP )" %(config.db['db']) )
             print "DB Created"
 
         db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
             "GRANT ALL ON DATABASE deploy TO %s" %(config.db['user']) )
+        db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
+            "GRANT INSERT ON TABLE deploy TO %s" %(config.db['user']) )
+        db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
+            "GRANT UPDATE ON TABLE deploy TO %s" %(config.db['user']) )
+        db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
+            "GRANT DELETE ON TABLE deploy TO %s" %(config.db['user']) )
     return "DB created" 
 
 

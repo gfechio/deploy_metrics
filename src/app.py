@@ -21,8 +21,11 @@ def deploy():
             data = {}
             data["req"] = json.loads(request.data)
             date = datetime.datetime.today()
-            data["time"] = date.strftime("%Y-%m-%d-%H-%M-%S")
-            db_handler.cockroachdb(config.db["db"], config.db['user'], config.db['host'], "INSERT INTO deploy (time, req) VALUES (%s, %s)" %(data['time'], data['req']) )
+            data["time"] = date.strftime("%Y-%m-%d %H:%M:%S")
+            db_handler.cockroachdb(config.db["db"], config.db['user'], config.db['host'],
+                "INSERT INTO deploy (time, deploy, id) VALUES ('%s', %s, %s)"
+                %(data['time'], data['req'],data['req']) )
+
             log.logger.info("request.response")
             return  "200 OK"
         else:
