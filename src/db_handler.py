@@ -1,4 +1,5 @@
 import psycopg2
+import log
 
 def cockroachdb(db, user, host, query):
     conn = psycopg2.connect(database=db , user=user, host=host, port=26257)
@@ -13,7 +14,7 @@ def cockroachdb(db, user, host, query):
         for row in rows:
             log.logger.info([str(cell) for cell in row])
     except:
-        print "Nothing to fetch"
+        print("Nothing to fetch")
 
     cur.close()
     conn.close()
