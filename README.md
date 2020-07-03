@@ -21,3 +21,4 @@ What data will be persisted:
 - Add Swagger
 - Create on-prem terraformed infra
 - Create separated DB cluster
+- Store TF states remotely
