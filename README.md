@@ -1,4 +1,4 @@
-# http_api
+# Metrics for Deploy
 Deploy api to calculate and manage how long does it takes to deploy new "things" to Production environment.
 The API will receive:
 * Component: What is been deployed
