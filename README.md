@@ -19,3 +19,5 @@ What data will be persisted:
 
 - Error creating Database
 - Add Swagger
+- Create on-prem terraformed infra
+- Create separated DB cluster
