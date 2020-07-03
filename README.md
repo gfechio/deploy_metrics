@@ -18,3 +18,4 @@ What data will be persisted:
 # To Do
 
 - Error creating Database
+- Add Swagger
