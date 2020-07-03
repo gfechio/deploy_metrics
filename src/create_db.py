@@ -7,7 +7,7 @@ import log
 def create_db():
 
     if os.path.isfile("/src/db_done"):
-        print "DB created"
+        print("DB created")
     else:
         try:
             db_handler.cockroachdb("", "root", config.db['host'],
@@ -19,7 +19,7 @@ def create_db():
         except:
             db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
                 "CREATE TABLE IF NOT EXISTS %s ( id INT PRIMARY KEY,  status VARCHAR, time TIMESTAMP )" %(config.db['db']) )
-            print "DB Created"
+            print("DB Created")
 
         db_handler.cockroachdb(config.db["db"], "root", config.db['host'],
             "GRANT ALL ON DATABASE deploy TO %s" %(config.db['user']) )
